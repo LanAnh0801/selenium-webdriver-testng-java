@@ -5,7 +5,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class Topic_01_Data_Type {
+
 	public static void main(String[] args) {
+	
+	
+		
 		/*
 		 * I, Nguyeen thuy
 		 * boolean
@@ -39,10 +43,10 @@ public class Topic_01_Data_Type {
 		 */
 		int[] teacherNumbers = {12, 3, 4};
 		String[] studentNumbers = {"Doan lan anh", "dOAN MAI ANH"};
-		WebDriver webDriver = new ChromeDriver();
-		Actions action = new Actions(webDriver);
-		Object students;
-		String username = "Doan lan anh";
+		//WebDriver webDriver = new ChromeDriver();
+//		Actions action = new Actions(webDriver);
+//		Object students;
+//		String username = "Doan lan anh";
 		
 		
 	}

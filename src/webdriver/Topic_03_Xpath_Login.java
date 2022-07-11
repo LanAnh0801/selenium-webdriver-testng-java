@@ -154,6 +154,7 @@ public class Topic_03_Xpath_Login {
 		String contactInfText =  driver.findElement(By.xpath("//h3[text() = 'Contact Information']/parent::div/following-sibling::div/p")).getText();
 		Assert.assertTrue(contactInfText.contains(fullName));
 		Assert.assertTrue(contactInfText.contains(emailAddress));
+		
 	}
 	//Tạo hàm Random
 	public  int generateRandomNumber() {
