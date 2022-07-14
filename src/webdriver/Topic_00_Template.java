@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,6 +17,7 @@ public class Topic_00_Template {
 	WebDriver driver;
 	WebDriverWait expliciWait;
 	String projectPath = System.getProperty("user.dir");
+	JavascriptExecutor jsExecutor;
 
 	@BeforeClass
 	public void beforeClass() {
@@ -24,6 +26,7 @@ public class Topic_00_Template {
 		//Khai báo sau driver vì lấy giá trị của driver để khởi tao
 		//EXPLIVIWAIT ĐỂ wait các Element theo điều kiện có sẵn
 		expliciWait = new WebDriverWait(driver, 15);
+		jsExecutor = (JavascriptExecutor) driver;
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get("");
