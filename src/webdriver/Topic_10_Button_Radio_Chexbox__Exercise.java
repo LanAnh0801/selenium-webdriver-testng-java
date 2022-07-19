@@ -96,12 +96,7 @@ public class Topic_10_Button_Radio_Chexbox__Exercise {
 		
 	}
 
-	@Test
-	public void TC_03_Select_All_Chexbox() {
-	//	driver.get("https://automationfc.github.io/multiple-fields/");
 	
-	}
-
 	@AfterClass
 	public void afterClass() {
 		//driver.quit();
