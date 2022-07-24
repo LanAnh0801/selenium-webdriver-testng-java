@@ -34,6 +34,7 @@ public class Topic_00_Template {
 		jsExecutor = (JavascriptExecutor) driver;
 		//Khai báo trong Before class vì nó khởi tạo cùng lúc với Element
 		actions = new Actions(driver);
+		//implicitlyWait apply cho việc tìm findElement và findElements 
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get("");
