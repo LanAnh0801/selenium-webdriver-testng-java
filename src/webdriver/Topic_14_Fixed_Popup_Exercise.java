@@ -129,7 +129,7 @@ public class Topic_14_Fixed_Popup_Exercise {
 	}
 
 	@Test
-	public void TC_03_Fixed_Popup_Not_In_Dom() {
+	public void TC_04_Fixed_Popup_Not_In_Dom() {
 		// Step 01;: Truy cập trang
 		driver.get("https://jtexpress.vn/");
 		//Step 02: Kiểm tra Popup HomeSlider hiển thị
