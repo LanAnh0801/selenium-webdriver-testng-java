@@ -17,14 +17,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_15_Frame_IFrame_Exercise {
+public class Topic_15_Frame_IFrame {
 	WebDriver driver;
 	WebDriverWait expliciWait;
 	String projectPath = System.getProperty("user.dir");
 	JavascriptExecutor jsExecutor;
 	//Thư viện Actions như thư viện Select
 	Actions actions;
-	Select select;
 
 	@BeforeClass
 	public void beforeClass() {
@@ -41,62 +40,68 @@ public class Topic_15_Frame_IFrame_Exercise {
 		driver.manage().window().maximize();
 		
 	}
-
+	//Switch To có 3 loại: Alert/ Frame/IFramme/Window
 	//@Test
 	public void TC_01_IFrame() {
+		//A
 		driver.get("https://kyna.vn/");
-		//Step 02: Verify Facebook Iframe hiển thị
-		driver.switchTo().frame(driver.findElement(By.cssSelector("div.fanpage iframe")));
-		
-		//Step 03: Verify số lượng like của Face page a=là: 
-		//B
-		WebElement likeNumber = driver.findElement(By.xpath("//a[text() = 'Kyna.vn']/parent::div/following-sibling::div"));
-		Assert.assertEquals(likeNumber.getText(), "166K likes");
-		sleepInSecond(2);
-		//Step 04: Click vào chat Iframe
-			//Iframe C trong A (B-> chuyển về A)
+//		driver.switchTo().frame(0);//C1: Dùng index -> Frame thứ mấy -> Xóa/Update thì bị Fail -> KO DÙNG
+//		driver.switchTo().frame("");//C2: Dùng id, name, ...
+		//A -> B
+		driver.switchTo().frame(driver.findElement(By.cssSelector("div.fanpage iframe")));//C3: Dùng element -> NÊN DÙNG
+		//B (Element thuộc B)
+		String likeNumber = driver.findElement(By.xpath("//a[text() = 'Kyna.vn']/parent::div//following-sibling::div")).getText();
+		Assert.assertEquals(likeNumber, "166K likes");
+		//A -> C
+			//Nhảy từ B -> A 
 		driver.switchTo().defaultContent();
-		driver.switchTo().frame("cs_chat_iframe");// id của IFrame
+			//Rùi mới A -> C
+		driver.switchTo().frame("cs_chat_iframe");
+		//C (Element thuộc C)
 		driver.findElement(By.cssSelector("div.meshim_widget_Widget")).click();
 		sleepInSecond(3);
-		//Step 05: Nhập dữ liệu vào các field
-		driver.findElement(By.cssSelector("input.input_name")).sendKeys("JungKôk");
-		driver.findElement(By.cssSelector("input.input_phone")).sendKeys("0912347898");
-		select = new Select(driver.findElement(By.id("serviceSelect")));
-		select.selectByVisibleText("TƯ VẤN TUYỂN SINH");
+		
+		driver.findElement(By.cssSelector("input.input_name")).sendKeys("JungKook");
+		driver.findElement(By.cssSelector("input.input_phone")).sendKeys("123456");
+		new  Select (driver.findElement(By.cssSelector("select#serviceSelect"))).selectByVisibleText("HỖ TRỢ KỸ THUẬT");
 		driver.findElement(By.xpath("//textarea[@name = 'message']")).sendKeys("Register");
-		sleepInSecond(3);
-		//Step 06: Sendkey với từ khóa là "Excel" và click vào Search icon
-		//	Quay lại page A 
+		sleepInSecond(5);
+		
+		//C -> A
 		driver.switchTo().defaultContent();
+		//A (Element thuộc A)
 		String key = "Excel";
 		driver.findElement(By.cssSelector("input#live-search-bar")).sendKeys(key);
 		driver.findElement(By.cssSelector("button.search-button")).click();
-		//Step 07: Verify chuyển qua page danh sách khóa học chứa từ khóa Exercise
-		List<WebElement> courseTitle = driver.findElements(By.cssSelector("div.content h4"));
-		Assert.assertEquals(courseTitle.size(), 9);
-		for (WebElement item : courseTitle) {
+		List<WebElement> courseName = driver.findElements(By.cssSelector("div.content>h4"));
+		//Verify số lượng
+		Assert.assertEquals(courseName.size(), 9);
+		for (WebElement item : courseName) {
+			//Verify chứa text Excel
 			Assert.assertTrue(item.getText().contains(key));
-			
 		}
-	
 	}
+	
 
 	@Test
 	public void TC_02_Frame() {
-		//Step 01: Truy cập vào trang https://netbanking.hdfcbank.com/netbanking/
 		driver.get("https://netbanking.hdfcbank.com/netbanking/");
-		//Step 02: Input vào Customer ID và click vào Continue
+		//Step 02:Input vào Customer ID và click vào Continue
+		//Step 03: Verify Password textbox hiển thị
 		driver.switchTo().frame("login_page");
-		driver.findElement(By.cssSelector("input.form-control")).sendKeys("123456");
-		driver.findElement(By.cssSelector("a.login-btn")).click();
+		driver.findElement(By.cssSelector("input.form-control")).sendKeys("automationfc");
+		driver.findElement(By.cssSelector("a.btn-primary")).click();
 		sleepInSecond(3);
-		//Step 03: Verify password textbox hiển thị
 		WebElement passWordText =  driver.findElement(By.id("fldPasswordDispId"));
 		Assert.assertTrue(passWordText.isDisplayed());
+		passWordText.sendKeys("autofc");
 		
 	}
 
+	@Test
+	public void TC_03_() {
+		
+	}
 
 	@AfterClass
 	public void afterClass() {
