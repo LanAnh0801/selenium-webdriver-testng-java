@@ -64,7 +64,7 @@ public class Topic_07_Textbox_TextArea_Exercise_TC_01 {
 
 	}
 
-	@Test
+	//@Test
 	public void TC_03_New_Customer() {
 		driver.findElement(By.xpath("//a[text() = 'New Customer']")).click();
 		// Tránh làm từng field
