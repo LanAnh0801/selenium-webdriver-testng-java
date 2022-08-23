@@ -2,6 +2,9 @@ package javaTester;
 
 import java.util.Random;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 public class Topic_03_Random {
 	public static void main(String[] args) {
 		Random random = new Random();
@@ -11,6 +14,7 @@ public class Topic_03_Random {
 		System.out.println(random.nextInt(99));
 		System.out.println(random.nextInt(99));
 		System.out.println(random.nextInt(99));
+		
 	}
 
 }

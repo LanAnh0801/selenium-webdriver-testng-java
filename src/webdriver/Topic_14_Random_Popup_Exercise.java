@@ -58,7 +58,7 @@ public class Topic_14_Random_Popup_Exercise {
 		driver.findElement(By.xpath("//aside[@id = 'secondary']//input[@class='search-field']")).sendKeys("Selenium");
 		driver.findElement(By.xpath("//aside[@id = 'secondary']//span[@class = 'glass']")).click();
 		//Step 04: Kiểm tra các title có xuất hiện đều chưa từ khóa Selenium
-		List<WebElement> postTitle = driver.findElements(By.cssSelector("h3.post-title"));
+		List<WebElement> postTitle = driver.findElements(By.cssSelector("h3.post-title>a"));
 		for (WebElement item : postTitle) {
 			sleepInSecond(2);
 			Assert.assertTrue(item.getText().contains("Selenium"));

@@ -1,10 +1,12 @@
 package javaTester;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 public class Topic_05_Param {
-	//Parameter: Tham số
-	// Hàm không có tham số
+	
+	
 	public void clickElement() {
 
 	}
